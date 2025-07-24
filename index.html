@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISTRISHOP RML SAS - Catálogo Interactivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #C62828, #E53935);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: movePattern 20s linear infinite;
+        }
+
+        @keyframes movePattern {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .products-grid {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.1), rgba(229, 57, 53, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(198, 40, 40, 0.2);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 14px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            padding: 20px;
+            line-height: 1.4;
+            background: linear-gradient(45deg, #f1f3f4, #e8eaed);
+            border: 2px dashed #dadce0;
+            border-radius: 10px;
+            margin: 20px;
+            height: calc(100% - 40px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-weight: 500;
+        }
+
+        .product-content {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .product-card:hover .product-name {
+            color: #C62828;
+        }
+
+        .star {
+            color: #FFC107;
+            font-size: 1.3rem;
+            filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .product-category {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .product-category::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, #C62828, #E53935);
+            border-radius: 1px;
+        }
+
+        .product-prices {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .price-main {
+            color: #E53935;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(229, 57, 53, 0.2);
+        }
+
+        .price-secondary {
+            color: #95a5a6;
+            text-decoration: line-through;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #E53935, #C62828);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .click-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #C62828;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .click-indicator {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #C62828, #E53935);
+            color: white;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        /* Image Slider */
+        .image-slider {
+            position: relative;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slider-image {
+            min-width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 16px;
+            text-align: center;
+            position: relative;
+        }
+
+        .slider-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-placeholder {
+            padding: 40px;
+            line-height: 1.6;
+            background: linear-gradient(45deg, #f1f3f4, #e8eaed);
+            border: 3px dashed #dadce0;
+            border-radius: 10px;
+            margin: 20px;
+            height: calc(100% - 40px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-weight: 600;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #C62828;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .slider-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .slider-prev {
+            left: 15px;
+        }
+
+        .slider-next {
+            right: 15px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #C62828;
+            transform: scale(1.2);
+        }
+
+        .product-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .detail-section h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+        }
+
+        .detail-info {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .modal-prices {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .modal-price-main {
+            color: #E53935;
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+
+        .modal-price-secondary {
+            color: #95a5a6;
+            text-decoration: line-through;
+            font-size: 1.4rem;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer p:last-child {
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .product-name {
+                font-size: 1.2rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .product-details {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .slider-image {
+                height: 250px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #C62828;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DISTRISHOP RML SAS</h1>
+            <p>Catálogo Interactivo - Ofertas Especiales Black Friday</p>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Los productos se generarán dinámicamente -->
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 DISTRISHOP RML SAS - Todos los derechos reservados</p>
+            <p>WhatsApp: 311 852 1217 | Instagram: @distrishop_rml | Calle 123 #45-67, Bogotá</p>
+        </div>
+    </div>
+
+    <!-- Modal para detalles del producto -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Producto</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="image-slider">
+                    <div class="slider-container" id="sliderContainer">
+                        <!-- Las imágenes se generarán dinámicamente -->
+                    </div>
+                    <button class="slider-nav slider-prev" id="sliderPrev">‹</button>
+                    <button class="slider-nav slider-next" id="sliderNext">›</button>
+                </div>
+                <div class="slider-dots" id="sliderDots">
+                    <!-- Los dots se generarán dinámicamente -->
+                </div>
+                
+                <div class="modal-prices" id="modalPrices">
+                    <!-- Los precios se generarán dinámicamente -->
+                </div>
+
+                <div class="product-details">
+                    <div class="detail-section">
+                        <h3>Descripción</h3>
+                        <div class="detail-info" id="productDescription">
+                            <!-- La descripción se generará dinámicamente -->
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <h3>Características</h3>
+                        <div class="detail-info" id="productFeatures">
+                            <!-- Las características se generarán dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de productos con información detallada
+        const products = [
+            {
+                id: 1,
+                name: "Smartphone Samsung Galaxy S24",
+                category: "Tecnología",
+                priceMain: "$299.900",
+                priceSecondary: "$399.900",
+                discount: "-25%",
+                description: "El último smartphone Samsung Galaxy con tecnología de vanguardia, cámara profesional y rendimiento excepcional para todas tus necesidades diarias.",
+                features: "• Pantalla AMOLED 6.1 pulgadas<br>• Cámara triple 50MP + 12MP + 10MP<br>• Procesador Exynos 2400<br>• 8GB RAM + 256GB almacenamiento<br>• Batería 4000mAh con carga rápida",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Vista frontal del Samsung Galaxy S24",
+                    "[CÓDIGO DE IMAGEN 2]<br>Vista posterior mostrando las cámaras",
+                    "[CÓDIGO DE IMAGEN 3]<br>Accesorios incluidos en la caja"
+                ]
+            },
+            {
+                id: 2,
+                name: "Smartwatch Apple Watch Series 9",
+                category: "Smartwatch",
+                priceMain: "$199.900",
+                priceSecondary: "$249.900",
+                discount: "-20%",
+                description: "El smartwatch más avanzado de Apple con monitoreo de salud completo, GPS integrado y resistencia al agua para acompañarte en cada aventura.",
+                features: "• Pantalla Retina Always-On<br>• Sensor de oxígeno en sangre<br>• ECG y monitoreo cardíaco<br>• GPS + Cellular disponible<br>• Resistente al agua hasta 50m",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Apple Watch con correa deportiva",
+                    "[CÓDIGO DE IMAGEN 2]<br>Interfaz y aplicaciones principales",
+                    "[CÓDIGO DE IMAGEN 3]<br>Diferentes colores y correas disponibles"
+                ]
+            },
+            {
+                id: 3,
+                name: "Aspiradora Robot Inteligente Roomba",
+                category: "Hogar",
+                priceMain: "$159.900",
+                priceSecondary: "$199.900",
+                discount: "-20%",
+                description: "Aspiradora robot con inteligencia artificial que mapea tu hogar y limpia de forma autónoma, compatible con Alexa y Google Assistant.",
+                features: "• Mapeo inteligente con sensores<br>• Succión potente 3 niveles<br>• Batería de larga duración<br>• Control por app móvil<br>• Base de carga automática",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Roomba en funcionamiento sobre alfombra",
+                    "[CÓDIGO DE IMAGEN 2]<br>Base de carga y accesorios",
+                    "[CÓDIGO DE IMAGEN 3]<br>App móvil de control remoto"
+                ]
+            },
+            {
+                id: 4,
+                name: "Crema Facial Anti-edad Premium Olay",
+                category: "Belleza",
+                priceMain: "$49.900",
+                priceSecondary: "$69.900",
+                discount: "-29%",
+                description: "Crema facial premium con ingredientes activos que combaten los signos del envejecimiento, hidrata profundamente y mejora la textura de la piel.",
+                features: "• Ácido hialurónico y retinol<br>• Protección UV SPF 30<br>• Fórmula no comedogénica<br>• Resultados visibles en 7 días<br>• Apta para todo tipo de piel",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Envase elegante de la crema Olay",
+                    "[CÓDIGO DE IMAGEN 2]<br>Textura cremosa y aplicación",
+                    "[CÓDIGO DE IMAGEN 3]<br>Antes y después de uso regular"
+                ]
+            },
+            {
+                id: 5,
+                name: "Suplemento Vitamínico Completo Centrum",
+                category: "Bienestar",
+                priceMain: "$29.900",
+                priceSecondary: "$39.900",
+                discount: "-25%",
+                description: "Multivitamínico completo con 24 vitaminas y minerales esenciales para mantener tu energía y bienestar durante todo el día.",
+                features: "• 24 vitaminas y minerales<br>• Vitaminas A, C, D, E y complejo B<br>• Hierro, calcio y zinc<br>• 60 tabletas (2 meses)<br>• Certificado por FDA",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Frasco de Centrum multivitamínico",
+                    "[CÓDIGO DE IMAGEN 2]<br>Tabletas y composición nutricional",
+                    "[CÓDIGO DE IMAGEN 3]<br>Beneficios para la salud diaria"
+                ]
+            },
+            {
+                id: 6,
+                name: "Batidora de Cocina Profesional KitchenAid",
+                category: "Cocina",
+                priceMain: "$89.900",
+                priceSecondary: "$119.900",
+                discount: "-25%",
+                description: "Batidora profesional de alta potencia con múltiples accesorios para todas tus necesidades culinarias, desde masas hasta merengues perfectos.",
+                features: "• Motor de 300W de potencia<br>• 5 velocidades + función turbo<br>• Tazón de acero inoxidable 4.3L<br>• 3 accesorios incluidos<br>• Garantía 2 años",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>KitchenAid en color rojo clásico",
+                    "[CÓDIGO DE IMAGEN 2]<br>Accesorios y batidores incluidos",
+                    "[CÓDIGO DE IMAGEN 3]<br>Preparando masa para pan casero"
+                ]
+            },
+            {
+                id: 7,
+                name: "Taladro Inalámbrico 18V Black & Decker",
+                category: "Herramientas",
+                priceMain: "$79.900",
+                priceSecondary: "$99.900",
+                discount: "-20%",
+                description: "Taladro inalámbrico profesional con batería de litio de larga duración, perfecto para trabajos de carpintería y reparaciones domésticas.",
+                features: "• Batería de litio 18V<br>• 2 velocidades ajustables<br>• Mandril automático 13mm<br>• LED de iluminación<br>• Maletín y accesorios incluidos",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Taladro Black & Decker con batería",
+                    "[CÓDIGO DE IMAGEN 2]<br>Maletín con brocas y accesorios",
+                    "[CÓDIGO DE IMAGEN 3]<br>En uso perforando diferentes materiales"
+                ]
+            },
+            {
+                id: 8,
+                name: "Cámara de Seguridad WiFi HD Xiaomi",
+                category: "Cámaras de Seguridad",
+                priceMain: "$69.900",
+                priceSecondary: "$89.900",
+                discount: "-22%",
+                description: "Cámara de seguridad inteligente con visión nocturna, detección de movimiento y acceso remoto desde tu smartphone las 24 horas.",
+                features: "• Resolución Full HD 1080p<br>• Visión nocturna infrarroja<br>• Detección de movimiento IA<br>• Audio bidireccional<br>• Almacenamiento en la nube",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Cámara Xiaomi montada en pared",
+                    "[CÓDIGO DE IMAGEN 2]<br>App móvil con vista en vivo",
+                    "[CÓDIGO DE IMAGEN 3]<br>Visión nocturna y alertas"
+                ]
+            },
+            {
+                id: 9,
+                name: "Juguete Interactivo para Perros Kong",
+                category: "Mascotas",
+                priceMain: "$19.900",
+                priceSecondary: "$24.900",
+                discount: "-20%",
+                description: "Juguete resistente y seguro que mantiene a tu perro entretenido durante horas, perfecto para reducir ansiedad y promover el juego activo.",
+                features: "• Material ultra resistente<br>• Diseño ergonómico<br>• Apto para todas las razas<br>• Fácil de limpiar<br>• Recomendado por veterinarios",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Kong clásico en color rojo",
+                    "[CÓDIGO DE IMAGEN 2]<br>Perro jugando felizmente",
+                    "[CÓDIGO DE IMAGEN 3]<br>Diferentes tamaños disponibles"
+                ]
+            },
+            {
+                id: 10,
+                name: "Parlante Bluetooth Portátil JBL Flip 6",
+                category: "Parlantes",
+                priceMain: "$59.900",
+                priceSecondary: "$79.900",
+                discount: "-25%",
+                description: "Parlante Bluetooth de alta calidad con sonido potente y graves profundos, resistente al agua para llevarlo a cualquier aventura.",
+                features: "• Sonido JBL Pro Sound<br>• 12 horas de reproducción<br>• Resistente al agua IP67<br>• Conexión Bluetooth 5.1<br>• Función PartyBoost",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>JBL Flip 6 en color azul",
+                    "[CÓDIGO DE IMAGEN 2]<br>Resistente al agua en la piscina",
+                    "[CÓDIGO DE IMAGEN 3]<br>Conectividad y controles táctiles"
+                ]
+            },
+            {
+                id: 11,
+                name: "Muñeca Interactiva con Sonidos Barbie",
+                category: "Juguetería",
+                priceMain: "$39.900",
+                priceSecondary: "$49.900",
+                discount: "-20%",
+                description: "Muñeca Barbie interactiva que habla, canta y responde al tacto, incluye accesorios y vestidos intercambiables para horas de diversión.",
+                features: "• Más de 100 frases y canciones<br>• Sensores táctiles interactivos<br>• 5 vestidos intercambiables<br>• Accesorios incluidos<br>• Batería recargable",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Barbie con vestido principal",
+                    "[CÓDIGO DE IMAGEN 2]<br>Accesorios y vestidos extra",
+                    "[CÓDIGO DE IMAGEN 3]<br>Niña jugando e interactuando"
+                ]
+            },
+            {
+                id: 12,
+                name: "Organizador Multiuso Premium IKEA",
+                category: "Otros",
+                priceMain: "$24.900",
+                priceSecondary: "$29.900",
+                discount: "-17%",
+                description: "Organizador versátil con múltiples compartimentos para mantener ordenados tus espacios, ideal para oficina, cocina o dormitorio.",
+                features: "• 12 compartimentos ajustables<br>• Material resistente y duradero<br>• Diseño moderno escandinavo<br>• Fácil montaje sin herramientas<br>• Múltiples usos y espacios",
+                images: [
+                    "[CÓDIGO DE IMAGEN 1]<br>Organizador montado y funcional",
+                    "[CÓDIGO DE IMAGEN 2]<br>Diferentes configuraciones posibles",
+                    "[CÓDIGO DE IMAGEN 3]<br>En uso en oficina moderna"
+                ]
+            }
+        ];
+
+        let currentSlide = 0;
+        let currentProduct = null;
+
+        // Generar productos dinámicamente
+        function generateProducts() {
+            const grid = document.getElementById('productsGrid');
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.onclick = () => openProductModal(product);
+                
+                productCard.innerHTML = `
+                    <div class="click-indicator">Click para ver más</div>
+                    <div class="product-image-container">
+                        <div class="product-image">
+                            <div class="image-placeholder">
+                                [CÓDIGO DE IMAGEN]<br>
+                                ${product.name}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">
+                            ${product.name}
+                            <span class="star">★</span>
+                        </h3>
+                        <p class="product-category">${product.category}</p>
+                        <div class="product-prices">
+                            <span class="price-main">${product.priceMain}</span>
+                            <span class="price-secondary">${product.priceSecondary}</span>
+                            <span class="discount-badge">${product.discount}</span>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(productCard);
+            });
+        }
+
+        // Abrir modal del producto
+        function openProductModal(product) {
+            currentProduct = product;
+            currentSlide = 0;
+            
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalPrices = document.getElementById('modalPrices');
+            const productDescription = document.getElementById('productDescription');
+            const productFeatures = document.getElementById('productFeatures');
+            
+            // Actualizar contenido del modal
+            modalTitle.textContent = product.name;
+            modalPrices.innerHTML = `
+                <span class="modal-price-main">${product.priceMain}</span>
+                <span class="modal-price-secondary">${product.priceSecondary}</span>
+                <span class="discount-badge">${product.discount}</span>
+            `;
+            productDescription.textContent = product.description;
+            productFeatures.innerHTML = product.features;
+            
+            // Generar slider de imágenes
+            generateImageSlider(product.images);
+            
+            // Mostrar modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Generar slider de imágenes
+        function generateImageSlider(images) {
+            const sliderContainer = document.getElementById('sliderContainer');
+            const sliderDots = document.getElementById('sliderDots');
+            
+            // Limpiar contenido anterior
+            sliderContainer.innerHTML = '';
+            sliderDots.innerHTML = '';
+            
+            // Generar imágenes
+            images.forEach((image, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'slider-image';
+                slideDiv.innerHTML = `
+                    <div class="slider-placeholder">
+                        ${image}
+                    </div>
+                `;
+                sliderContainer.appendChild(slideDiv);
+                
+                // Generar dots
+                const dot = document.createElement('div');
+                dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(index);
+                sliderDots.appendChild(dot);
+            });
+            
+            updateSlider();
+        }
+
+        // Navegar a slide específico
+        function goToSlide(slideIndex) {
+            if (!currentProduct) return;
+            
+            currentSlide = slideIndex;
+            updateSlider();
+        }
+
+        // Actualizar posición del slider
+        function updateSlider() {
+            const sliderContainer = document.getElementById('sliderContainer');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Slide anterior
+        function prevSlide() {
+            if (!currentProduct) return;
+            
+            currentSlide = currentSlide > 0 ? currentSlide - 1 : currentProduct.images.length - 1;
+            updateSlider();
+        }
+
+        // Slide siguiente
+        function nextSlide() {
+            if (!currentProduct) return;
+            
+            currentSlide = currentSlide < currentProduct.images.length - 1 ? currentSlide + 1 : 0;
+            updateSlider();
+        }
+
+        // Cerrar modal
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentProduct = null;
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            generateProducts();
+            
+            // Modal controls
+            document.getElementById('modalClose').onclick = closeModal;
+            document.getElementById('sliderPrev').onclick = prevSlide;
+            document.getElementById('sliderNext').onclick = nextSlide;
+            
+            // Cerrar modal al hacer click fuera
+            document.getElementById('productModal').onclick = function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            };
+            
+            // Navegación con teclado
+            document.addEventListener('keydown', function(e) {
+                if (!currentProduct) return;
+                
+                switch(e.key) {
+                    case 'Escape':
+                        closeModal();
+                        break;
+                    case 'ArrowLeft':
+                        prevSlide();
+                        break;
+                    case 'ArrowRight':
+                        nextSlide();
+                        break;
+                }
+            });
+            
+            // Auto-slide cada 5 segundos (opcional)
+            setInterval(() => {
+                if (currentProduct && document.getElementById('productModal').classList.contains('active')) {
+                    nextSlide();
+                }
+            }, 5000);
+        });
+
+        // Efectos adicionales de interacción
+        document.addEventListener('mousemove', function(e) {
+            const cards = document.querySelectorAll('.product-card');
+            
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+                } else {
+                    card.style.transform = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
