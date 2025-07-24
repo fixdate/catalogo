@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISTRISHOP RML SAS - Ofertas Especiales Black Friday</title>
+    <meta name="description" content="Encuentra las mejores ofertas en tecnología, hogar, belleza y más en DISTRISHOP RML SAS. Precios mayoristas y envío rápido.">
+    <meta property="og:title" content="DISTRISHOP RML SAS - Ofertas Especiales">
+    <meta property="og:description" content="Las mejores ofertas en productos de tecnología, hogar y más">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-k">K</div>
+                <span class="logo-text">yte</span>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for items">
+                <button class="search-btn" aria-label="Buscar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="login-container">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <a href="#" class="login-link">Login or Create Account</a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <!-- Categorías -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Categorías</h3>
+                    <ul class="category-list">
+                        <li><a href="#" class="category-item active" data-category="all">All</a></li>
+                        <li><a href="#" class="category-item" data-category="highlights">Highlights</a></li>
+                        <li><a href="#" class="category-item" data-category="hogar">Hogar</a></li>
+                        <li><a href="#" class="category-item" data-category="tecnologia">Tecnología</a></li>
+                        <li><a href="#" class="category-item" data-category="smartwatch">Smartwatch</a></li>
+                        <li><a href="#" class="category-item" data-category="belleza">Belleza</a></li>
+                        <li><a href="#" class="category-item" data-category="bienestar">Bienestar</a></li>
+                        <li><a href="#" class="category-item" data-category="cocina">Cocina</a></li>
+                        <li><a href="#" class="category-item" data-category="herramientas">Herramientas</a></li>
+                        <li><a href="#" class="category-item" data-category="camaras">Cámaras de seguridad</a></li>
+                        <li><a href="#" class="category-item" data-category="mascotas">Mascotas</a></li>
+                        <li><a href="#" class="category-item" data-category="otros">Otros</a></li>
+                        <li><a href="#" class="category-item" data-category="parlantes">Parlantes</a></li>
+                        <li><a href="#" class="category-item" data-category="jugueteria">Juguetería</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ordenar -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Ordenar</h3>
+                    <ul class="sort-list">
+                        <li><a href="#" class="sort-item active" data-sort="categories">Categories</a></li>
+                        <li><a href="#" class="sort-item" data-sort="price-low">Lowest price</a></li>
+                        <li><a href="#" class="sort-item" data-sort="price-high">Highest price</a></li>
+                        <li><a href="#" class="sort-item" data-sort="a-z">A–Z</a></li>
+                        <li><a href="#" class="sort-item" data-sort="z-a">Z–A</a></li>
+                    </ul>
+                </div>
+
+                <!-- Layout -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Layout</h3>
+                    <div class="layout-options">
+                        <button class="layout-btn" data-layout="instaview" disabled aria-label="Vista Instaview">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </button>
+                        <button class="layout-btn active" data-layout="list" aria-label="Vista Lista">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contacto -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Contacto</h3>
+                    <div class="contact-info">
+                        <a href="https://wa.me/573118521217" class="contact-item" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
+                            </svg>
+                            <span>WhatsApp</span>
+                        </a>
+                        <a href="tel:+573118521217" class="contact-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>311 852 1217</span>
+                        </a>
+                        <a href="https://instagram.com/distrishop_rml" class="contact-item" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        <div class="address">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beneficios -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Beneficios</h3>
+                    <ul class="benefits-list">
+                        <li>📦 Precios Mayoristas</li>
+                        <li>🔒 Compra fácil y segura</li>
+                        <li>🚀 Envío rápido</li>
+                        <li>🔥 Ofertas exclusivas</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Banner Promocional -->
+            <section class="promo-banner">
+                <div class="banner-bg">
+                    <div class="black-friday-stripe">
+                        <span>BLACK FRIDAY BLACK FRIDAY BLACK FRIDAY BLACK FRIDAY</span>
+                    </div>
+                </div>
+                
+                <div class="banner-content">
+                    <div class="banner-left">
+                        <h1 class="banner-title">DISTRI SHOP</h1>
+                        <p class="banner-subtitle">OFERTAS ESPECIALES</p>
+                        
+                        <div class="social-handles">
+                            <div class="social-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                                <span>@distrishop_rml</span>
+                            </div>
+                            <div class="social-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0-6 0z"/>
+                                    <path d="M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1zm4.7 12.4a7.1 7.1 0 0 1-9.4 0a7.1 7.1 0 0 1 0-9.4a7.1 7.1 0 0 1 9.4 0a7.1 7.1 0 0 1 0 9.4z"/>
+                                </svg>
+                                <span>@distrishop_rml</span>
+                            </div>
+                            <div class="social-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/>
+                                </svg>
+                                <span>311 852 1217</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="banner-center">
+                        <div class="countdown-container">
+                            <h2 class="countdown-title">Oferta termina en:</h2>
+                            <div class="countdown" id="countdown">
+                                <div class="countdown-item">
+                                    <span class="countdown-number" id="days">00</span>
+                                    <span class="countdown-label">Días</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span class="countdown-number" id="hours">00</span>
+                                    <span class="countdown-label">Horas</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span class="countdown-number" id="minutes">00</span>
+                                    <span class="countdown-label">Min</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span class="countdown-number" id="seconds">00</span>
+                                    <span class="countdown-label">Seg</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="shop-now-btn" id="shopNowBtn">SHOP NOW</button>
+                    </div>
+                    
+                    <div class="banner-right">
+                        <div class="banner-graphics">
+                            <div class="megaphone">📢</div>
+                            <div class="gift-boxes">
+                                <div class="gift-box">🎁</div>
+                                <div class="percentage">%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Listado de Productos -->
+            <section class="products-section" id="products">
+                <h2 class="products-title">Nuestros Productos</h2>
+                <div class="products-list" id="productsList">
+                    <!-- Los productos se generarán dinámicamente con JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- Modales -->
+    <!-- Modal de Ubicación -->
+    <div class="modal" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>¿Dónde es?</h3>
+                <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.736!2d-74.0817!3d4.6097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMzYnMzUuMCJOIDc0wrAwNCc1NC4xIlc!5e0!3m2!1ses!2sco!4v1234567890"
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Hora -->
+    <div class="modal" id="timeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>¿A qué hora es?</h3>
+                <button class="modal-close" aria-label="Cerrar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="time-picker">
+                    <label for="timeInput">Selecciona la hora:</label>
+                    <input type="time" id="timeInput" class="time-input">
+                    <button class="confirm-time-btn" id="confirmTimeBtn">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
