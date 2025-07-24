@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISTRISHOP RML SAS - Catálogo de Productos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #C62828, #E53935);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .products-grid {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .product-card:hover {
+            border-color: #C62828;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(198, 40, 40, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: #6c757d;
+            font-size: 14px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #343a40;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .star {
+            color: #FFC107;
+            font-size: 1.2rem;
+        }
+
+        .product-category {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-prices {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .price-main {
+            color: #E53935;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .price-secondary {
+            color: #6c757d;
+            text-decoration: line-through;
+            font-size: 1.1rem;
+        }
+
+        .discount-badge {
+            background: #E53935;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .image-placeholder {
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        .footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .product-name {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DISTRISHOP RML SAS</h1>
+            <p>Catálogo de Productos - Ofertas Especiales</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Smartphone Samsung Galaxy
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Smartphone Samsung Galaxy
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Tecnología</p>
+                <div class="product-prices">
+                    <span class="price-main">$299.900</span>
+                    <span class="price-secondary">$399.900</span>
+                    <span class="discount-badge">-25%</span>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Smartwatch Apple Watch
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Smartwatch Apple Watch
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Smartwatch</p>
+                <div class="product-prices">
+                    <span class="price-main">$199.900</span>
+                    <span class="price-secondary">$249.900</span>
+                    <span class="discount-badge">-20%</span>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Aspiradora Robot Inteligente
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Aspiradora Robot Inteligente
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Hogar</p>
+                <div class="product-prices">
+                    <span class="price-main">$159.900</span>
+                    <span class="price-secondary">$199.900</span>
+                    <span class="discount-badge">-20%</span>
+                </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Crema Facial Anti-edad Premium
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Crema Facial Anti-edad Premium
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Belleza</p>
+                <div class="product-prices">
+                    <span class="price-main">$49.900</span>
+                    <span class="price-secondary">$69.900</span>
+                    <span class="discount-badge">-29%</span>
+                </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Suplemento Vitamínico Completo
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Suplemento Vitamínico Completo
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Bienestar</p>
+                <div class="product-prices">
+                    <span class="price-main">$29.900</span>
+                    <span class="price-secondary">$39.900</span>
+                    <span class="discount-badge">-25%</span>
+                </div>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Batidora de Cocina Profesional
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Batidora de Cocina Profesional
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Cocina</p>
+                <div class="product-prices">
+                    <span class="price-main">$89.900</span>
+                    <span class="price-secondary">$119.900</span>
+                    <span class="discount-badge">-25%</span>
+                </div>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Taladro Inalámbrico 18V
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Taladro Inalámbrico 18V
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Herramientas</p>
+                <div class="product-prices">
+                    <span class="price-main">$79.900</span>
+                    <span class="price-secondary">$99.900</span>
+                    <span class="discount-badge">-20%</span>
+                </div>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Cámara de Seguridad WiFi HD
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Cámara de Seguridad WiFi HD
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Cámaras de Seguridad</p>
+                <div class="product-prices">
+                    <span class="price-main">$69.900</span>
+                    <span class="price-secondary">$89.900</span>
+                    <span class="discount-badge">-22%</span>
+                </div>
+            </div>
+
+            <!-- Producto 9 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Juguete Interactivo para Perros
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Juguete Interactivo para Perros
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Mascotas</p>
+                <div class="product-prices">
+                    <span class="price-main">$19.900</span>
+                    <span class="price-secondary">$24.900</span>
+                    <span class="discount-badge">-20%</span>
+                </div>
+            </div>
+
+            <!-- Producto 10 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Parlante Bluetooth Portátil
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Parlante Bluetooth Portátil
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Parlantes</p>
+                <div class="product-prices">
+                    <span class="price-main">$59.900</span>
+                    <span class="price-secondary">$79.900</span>
+                    <span class="discount-badge">-25%</span>
+                </div>
+            </div>
+
+            <!-- Producto 11 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Muñeca Interactiva con Sonidos
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Muñeca Interactiva con Sonidos
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Juguetería</p>
+                <div class="product-prices">
+                    <span class="price-main">$39.900</span>
+                    <span class="price-secondary">$49.900</span>
+                    <span class="discount-badge">-20%</span>
+                </div>
+            </div>
+
+            <!-- Producto 12 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Organizador Multiuso Premium
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Organizador Multiuso Premium
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Otros</p>
+                <div class="product-prices">
+                    <span class="price-main">$24.900</span>
+                    <span class="price-secondary">$29.900</span>
+                    <span class="discount-badge">-17%</span>
+                </div>
+            </div>
+
+            <!-- Producto 13 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Auriculares Inalámbricos Pro
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Auriculares Inalámbricos Pro
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Tecnología</p>
+                <div class="product-prices">
+                    <span class="price-main">$129.900</span>
+                    <span class="price-secondary">$159.900</span>
+                    <span class="discount-badge">-19%</span>
+                </div>
+            </div>
+
+            <!-- Producto 14 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Set de Maquillaje Profesional
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Set de Maquillaje Profesional
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Belleza</p>
+                <div class="product-prices">
+                    <span class="price-main">$79.900</span>
+                    <span class="price-secondary">$99.900</span>
+                    <span class="discount-badge">-20%</span>
+                </div>
+            </div>
+
+            <!-- Producto 15 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Cafetera Automática Deluxe
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Cafetera Automática Deluxe
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Cocina</p>
+                <div class="product-prices">
+                    <span class="price-main">$189.900</span>
+                    <span class="price-secondary">$229.900</span>
+                    <span class="discount-badge">-17%</span>
+                </div>
+            </div>
+
+            <!-- Producto 16 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Lámpara LED Inteligente
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Lámpara LED Inteligente
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Hogar</p>
+                <div class="product-prices">
+                    <span class="price-main">$34.900</span>
+                    <span class="price-secondary">$44.900</span>
+                    <span class="discount-badge">-22%</span>
+                </div>
+            </div>
+
+            <!-- Producto 17 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Proteína en Polvo Sabor Vainilla
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Proteína en Polvo Sabor Vainilla
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Bienestar</p>
+                <div class="product-prices">
+                    <span class="price-main">$89.900</span>
+                    <span class="price-secondary">$109.900</span>
+                    <span class="discount-badge">-18%</span>
+                </div>
+            </div>
+
+            <!-- Producto 18 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Tablet Android 10 Pulgadas
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Tablet Android 10 Pulgadas
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Tecnología</p>
+                <div class="product-prices">
+                    <span class="price-main">$249.900</span>
+                    <span class="price-secondary">$299.900</span>
+                    <span class="discount-badge">-17%</span>
+                </div>
+            </div>
+
+            <!-- Producto 19 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Cargador Inalámbrico Rápido
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Cargador Inalámbrico Rápido
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Tecnología</p>
+                <div class="product-prices">
+                    <span class="price-main">$39.900</span>
+                    <span class="price-secondary">$49.900</span>
+                    <span class="discount-badge">-20%</span>
+                </div>
+            </div>
+
+            <!-- Producto 20 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="image-placeholder">
+                        [CÓDIGO DE IMAGEN]<br>
+                        Mochila Antirrobo con USB
+                    </div>
+                </div>
+                <h3 class="product-name">
+                    Mochila Antirrobo con USB
+                    <span class="star">★</span>
+                </h3>
+                <p class="product-category">Otros</p>
+                <div class="product-prices">
+                    <span class="price-main">$54.900</span>
+                    <span class="price-secondary">$69.900</span>
+                    <span class="discount-badge">-21%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 DISTRISHOP RML SAS - Todos los derechos reservados</p>
+            <p>WhatsApp: 311 852 1217 | Instagram: @distrishop_rml</p>
+        </div>
+    </div>
+</body>
+</html>
